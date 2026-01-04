@@ -11,19 +11,20 @@ body{
  font-family:Arial, sans-serif;
  background:#fff3e0;
  text-align:center;
+ overflow-x:hidden;
 }
-.gallery img{
+.slideshow img{
  width:90%;
- max-width:300px;
- margin:10px auto;
+ max-width:320px;
  border-radius:20px;
- display:block;
+ display:none;
+ margin:auto;
 }
 p{
  max-width:90%;
- margin:20px auto;
- font-size:1.1rem;
- line-height:1.6;
+ margin:25px auto;
+ font-size:1.15rem;
+ line-height:1.7;
 }
 button{
  padding:12px 25px;
@@ -32,14 +33,21 @@ button{
  border:none;
  border-radius:25px;
  font-size:1rem;
- margin-bottom:20px;
+ margin-bottom:25px;
 }
+.confetti,.balloon{
+ position:fixed;
+ top:-10px;
+ animation:fall linear infinite;
+}
+.balloon{width:20px;height:30px;border-radius:50%}
+@keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
 
 <body>
 
-<div class="gallery">
+<div class="slideshow">
  <img src="friend4.jpeg">
  <img src="friend5.jpeg">
  <img src="friend6.jpeg">
@@ -49,14 +57,36 @@ button{
 </div>
 
 <p>
-You are an amazing friend and an even better human being.
-Caring, supportive, and understanding — the kind of person
-who makes life lighter just by being around.
+Some people quietly make life better just by being themselves.
+Your kindness, your patience, and your support
+mean more than words can ever fully express.
+Moments become memories because of people like you.
 </p>
 
 <button onclick="location.href='final.html'">
 Final Note
 </button>
+
+<script>
+// slideshow
+let s=document.querySelectorAll(".slideshow img"),i=0;
+s[0].style.display="block";
+setInterval(()=>{
+ s[i].style.display="none";
+ i=(i+1)%s.length;
+ s[i].style.display="block";
+},2500);
+
+// effects
+for(let i=0;i<30;i++){
+ let e=document.createElement("div");
+ e.className=Math.random()>0.5?"confetti":"balloon";
+ e.style.left=Math.random()*100+"vw";
+ e.style.background=`hsl(${Math.random()*360},80%,60%)`;
+ e.style.animationDuration=2+Math.random()*3+"s";
+ document.body.appendChild(e);
+}
+</script>
 
 </body>
 </html>
