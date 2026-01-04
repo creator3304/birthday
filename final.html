@@ -3,40 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Final Note 🎆</title>
+<title>Final Note</title>
 
 <style>
-body{margin:0;background:black;color:white;text-align:center;font-family:Arial;}
-canvas{position:fixed;top:0;left:0;}
-p{margin-top:20px;font-size:1.1rem;line-height:1.6;}
+body{
+ margin:0;
+ font-family:Arial, sans-serif;
+ background:black;
+ color:white;
+ text-align:center;
+}
+.gallery img{
+ width:90%;
+ max-width:280px;
+ margin:10px auto;
+ border-radius:20px;
+ display:block;
+}
+p{
+ max-width:90%;
+ margin:30px auto;
+ font-size:1.1rem;
+ line-height:1.6;
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="fw"></canvas>
-
-<h2>Always Remember 🌟</h2>
+<div class="gallery">
+ <img src="friend10.jpg">
+ <img src="friend11.jpeg">
+ <img src="friend12.jpeg">
+ <img src="friend13.jpeg">
+</div>
 
 <p>
-Your journey, your friendship, your care — it all makes life brighter.  
-Keep shining and spreading happiness wherever you go.
+"Gae-bhains ki sewa mein jiska mann harshata hai,<br>
+Wo Yadav ka chhora Akhilesh ko apna neta batata hai."
 </p>
-
-<script>
-const c=document.getElementById("fw"),x=c.getContext("2d");
-c.width=innerWidth;c.height=innerHeight;
-
-setInterval(()=>{
- x.clearRect(0,0,c.width,c.height);
- for(let i=0;i<50;i++){
-  x.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
-  x.beginPath();
-  x.arc(Math.random()*c.width,Math.random()*c.height/2,2,0,6.28);
-  x.fill();
- }
-},800);
-</script>
 
 </body>
 </html>
