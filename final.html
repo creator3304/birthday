@@ -12,26 +12,34 @@ body{
  background:black;
  color:white;
  text-align:center;
+ overflow-x:hidden;
 }
-.gallery img{
+.slideshow img{
  width:90%;
- max-width:280px;
- margin:10px auto;
+ max-width:300px;
  border-radius:20px;
- display:block;
+ display:none;
+ margin:auto;
 }
 p{
  max-width:90%;
- margin:30px auto;
- font-size:1.1rem;
- line-height:1.6;
+ margin:35px auto;
+ font-size:1.2rem;
+ line-height:1.7;
 }
+.confetti,.balloon{
+ position:fixed;
+ top:-10px;
+ animation:fall linear infinite;
+}
+.balloon{width:20px;height:30px;border-radius:50%}
+@keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
 
 <body>
 
-<div class="gallery">
+<div class="slideshow">
  <img src="friend10.jpg">
  <img src="friend11.jpeg">
  <img src="friend12.jpeg">
@@ -42,6 +50,27 @@ p{
 "Gae-bhains ki sewa mein jiska mann harshata hai,<br>
 Wo Yadav ka chhora Akhilesh ko apna neta batata hai."
 </p>
+
+<script>
+// slideshow
+let s=document.querySelectorAll(".slideshow img"),i=0;
+s[0].style.display="block";
+setInterval(()=>{
+ s[i].style.display="none";
+ i=(i+1)%s.length;
+ s[i].style.display="block";
+},2500);
+
+// effects
+for(let i=0;i<30;i++){
+ let e=document.createElement("div");
+ e.className=Math.random()>0.5?"confetti":"balloon";
+ e.style.left=Math.random()*100+"vw";
+ e.style.background=`hsl(${Math.random()*360},80%,60%)`;
+ e.style.animationDuration=2+Math.random()*3+"s";
+ document.body.appendChild(e);
+}
+</script>
 
 </body>
 </html>
