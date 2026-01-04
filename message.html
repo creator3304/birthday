@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Are Amazing 💖</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#fff3e0;text-align:center;}
+p{max-width:90%;margin:20px auto;font-size:1.1rem;line-height:1.6;}
+.slideshow{max-width:300px;margin:20px auto;}
+.slideshow img{width:100%;border-radius:20px;display:none;}
+button{
+ padding:12px 25px;background:#ff7043;color:white;
+ border:none;border-radius:25px;font-size:1rem;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Just For You 💫</h2>
+
+<div class="slideshow">
+ <img src="friend1.jpg">
+ <img src="friend2.jpg">
+ <img src="friend3.jpg">
+ <img src="friend4.jpg">
+ <img src="friend5.jpg">
+ <img src="friend6.jpg">
+ <img src="friend7.jpg">
+ <img src="friend8.jpg">
+ <img src="friend9.jpg">
+ <img src="friend10.jpg">
+ <img src="friend11.jpg">
+ <img src="friend12.jpg">
+ <img src="friend13.jpg">
+</div>
+
+<p>
+You are truly amazing — not just as a friend,
+but as a human being.  
+You are caring, supportive, and always understanding.
+Your presence brings warmth and positivity.
+</p>
+
+<button onclick="location.href='final.html'">
+Final Note
+</button>
+
+<script>
+let slides=document.querySelectorAll(".slideshow img");
+let i=0;
+slides[0].style.display="block";
+setInterval(()=>{
+ slides[i].style.display="none";
+ i=(i+1)%slides.length;
+ slides[i].style.display="block";
+},2500);
+</script>
+
+</body>
+</html>
