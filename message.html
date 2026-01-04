@@ -3,62 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You Are Amazing 💖</title>
+<title>You Matter</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#fff3e0;text-align:center;}
-p{max-width:90%;margin:20px auto;font-size:1.1rem;line-height:1.6;}
-.slideshow{max-width:300px;margin:20px auto;}
-.slideshow img{width:100%;border-radius:20px;display:none;}
+body{
+ margin:0;
+ font-family:Arial, sans-serif;
+ background:#fff3e0;
+ text-align:center;
+}
+.gallery img{
+ width:90%;
+ max-width:300px;
+ margin:10px auto;
+ border-radius:20px;
+ display:block;
+}
+p{
+ max-width:90%;
+ margin:20px auto;
+ font-size:1.1rem;
+ line-height:1.6;
+}
 button{
- padding:12px 25px;background:#ff7043;color:white;
- border:none;border-radius:25px;font-size:1rem;
+ padding:12px 25px;
+ background:#ff7043;
+ color:white;
+ border:none;
+ border-radius:25px;
+ font-size:1rem;
+ margin-bottom:20px;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Just For You 💫</h2>
-
-<div class="slideshow">
- <img src="friend1.jpeg">
- <img src="friend2.jpeg">
- <img src="friend3.jpeg">
+<div class="gallery">
  <img src="friend4.jpeg">
  <img src="friend5.jpeg">
  <img src="friend6.jpeg">
  <img src="friend7.jpeg">
  <img src="friend8.jpeg">
  <img src="friend9.jpeg">
- <img src="friend10.jpg">
- <img src="friend11.jpeg">
- <img src="friend12.jpeg">
- <img src="friend13.jpeg">
 </div>
 
 <p>
-You are truly amazing — not just as a friend,
-but as a human being.  
-You are caring, supportive, and always understanding.
-Your presence brings warmth and positivity.
+You are an amazing friend and an even better human being.
+Caring, supportive, and understanding — the kind of person
+who makes life lighter just by being around.
 </p>
 
 <button onclick="location.href='final.html'">
 Final Note
 </button>
 
-<script>
-let slides=document.querySelectorAll(".slideshow img");
-let i=0;
-slides[0].style.display="block";
-setInterval(()=>{
- slides[i].style.display="none";
- i=(i+1)%slides.length;
- slides[i].style.display="block";
-},2500);
-</script>
-
 </body>
 </html>
-
