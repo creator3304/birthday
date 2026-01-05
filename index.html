@@ -3,104 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+<title>Birthday</title>
 
 <style>
 body{
- margin:0;
- font-family:Arial, sans-serif;
- background:linear-gradient(135deg,#ffecd2,#fcb69f);
- text-align:center;
- overflow-x:hidden;
+  margin:0;
+  font-family:Arial, sans-serif;
+  text-align:center;
+  background:#000;
+  color:white;
+  overflow:hidden;
 }
-h1{margin:30px 10px;color:#d84315}
-.slideshow img{
- width:90%;
- max-width:320px;
- border-radius:20px;
- display:none;
- margin:auto;
-}
+h1{margin-top:30px;}
 button{
- padding:14px 30px;
- background:#ff7043;
- color:white;
- border:none;
- border-radius:30px;
- font-size:1rem;
- margin:25px 0;
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
 }
-.confetti,.balloon{
- position:fixed;
- top:-10px;
- animation:fall linear infinite;
+.slideshow img{
+  width:80%;
+  max-width:300px;
+  border-radius:15px;
+  display:none;
 }
-.balloon{
- width:20px;height:30px;
- border-radius:50%;
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:red;
+  top:-10px;
+  animation:fall 5s linear infinite;
 }
 @keyframes fall{
- to{transform:translateY(110vh)}
+  to{transform:translateY(100vh);}
 }
 </style>
 </head>
 
 <body>
 
-<h1>Happy Birthday Kaushal 🎉</h1>
-<button id="playMusicBtn" style="
-padding:12px 20px;
-font-size:16px;
-border:none;
-border-radius:25px;
-background:#ff4d6d;
-color:white;
-margin-top:15px;">
-Tap to Play Music 🎵
-</button>
+<h1 id="type"></h1>
 
+<button id="playMusicBtn">Tap to Play Music 🎵</button>
 
-<script>
-// slideshow
-let s=document.querySelectorAll(".slideshow img"),i=0;
-s[0].style.display="block";
-setInterval(()=>{
- s[i].style.display="none";
- i=(i+1)%s.length;
- s[i].style.display="block";
-},2500);
+<div class="slideshow">
+  <img src="img1.jpg">
+  <img src="img2.jpg">
+  <img src="img3.jpg">
+</div>
 
-// confetti & balloons
-for(let i=0;i<30;i++){
- let e=document.createElement("div");
- e.className=Math.random()>0.5?"confetti":"balloon";
- e.style.left=Math.random()*100+"vw";
- e.style.background=`hsl(${Math.random()*360},80%,60%)`;
- e.style.animationDuration=2+Math.random()*3+"s";
- document.body.appendChild(e);
-}
-</script>
+<br><br>
+<a href="message.html"><button>There’s something more</button></a>
 
 <audio id="bgMusic" loop playsinline>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-document.getElementById("playMusicBtn").addEventListener("touchend", function () {
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.8;
+// typewriter
+let text="Happy Birthday Kaushal 🎉";
+let i=0;
+setInterval(()=>{
+  if(i<text.length){
+    document.getElementById("type").innerHTML+=text.charAt(i);
+    i++;
+  }
+},120);
 
-  music.play().then(() => {
-    localStorage.setItem("musicStarted", "yes");
-    this.style.display = "none";
-  }).catch(() => {
-    alert("Please tap the button once more 🎵");
-  });
-}, { once: true });
+// slideshow
+let slides=document.querySelectorAll(".slideshow img");
+let s=0;
+slides[0].style.display="block";
+setInterval(()=>{
+  slides[s].style.display="none";
+  s=(s+1)%slides.length;
+  slides[s].style.display="block";
+},2000);
+
+// confetti
+for(let i=0;i<40;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  c.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(c);
+}
+
+// music (iPhone safe)
+document.getElementById("playMusicBtn").addEventListener("touchend",()=>{
+  const m=document.getElementById("bgMusic");
+  m.volume=0.8;
+  m.play();
+  localStorage.setItem("music","yes");
+  document.getElementById("playMusicBtn").style.display="none";
+},{once:true});
 </script>
 
 </body>
 </html>
-
-
-
