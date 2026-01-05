@@ -48,17 +48,17 @@ button{
 <body>
 
 <h1>Happy Birthday Kaushal 🎉</h1>
- <button id="playMusicBtn">Tap to Play Music 🎵</button>
-
-<div class="slideshow">
- <img src="friend1.jpeg">
- <img src="friend2.jpeg">
- <img src="friend3.jpeg">
-</div>
-
-<button onclick="location.href='message.html'">
-There’s something more
+<button id="playMusicBtn" style="
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:25px;
+background:#ff4d6d;
+color:white;
+margin-top:15px;">
+Tap to Play Music 🎵
 </button>
+
 
 <script>
 // slideshow
@@ -81,54 +81,26 @@ for(let i=0;i<30;i++){
 }
 </script>
 
- <audio id="bgMusic" loop>
+<audio id="bgMusic" loop playsinline>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const music = document.getElementById("bgMusic");
+document.getElementById("playMusicBtn").addEventListener("touchend", function () {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.8;
 
-// start music after first user interaction
-document.addEventListener("click", () => {
-  if (!localStorage.getItem("musicStarted")) {
-    music.volume = 0.6;
-    music.play();
-    localStorage.setItem("musicStarted", "yes");
-  }
-});
-
-// resume music on page load
-if (localStorage.getItem("musicStarted")) {
-  music.volume = 0.6;
-  music.play().catch(()=>{});
-}
-</script>
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const music = document.getElementById("bgMusic");
-const btn = document.getElementById("playMusicBtn");
-
-btn.addEventListener("click", () => {
-  music.volume = 0.6;
   music.play().then(() => {
     localStorage.setItem("musicStarted", "yes");
-    btn.style.display = "none";
+    this.style.display = "none";
   }).catch(() => {
-    alert("Tap again to start music 🎵");
+    alert("Please tap the button once more 🎵");
   });
-});
-
-// resume music if already started
-if (localStorage.getItem("musicStarted")) {
-  music.volume = 0.6;
-  music.play().catch(()=>{});
-}
+}, { once: true });
 </script>
 
 </body>
 </html>
+
 
 
