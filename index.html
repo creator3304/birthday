@@ -22,18 +22,19 @@ button{
   border-radius:30px;
   background:#ff4d6d;
   color:white;
+  margin:10px;
 }
 .slideshow img{
   width:80%;
   max-width:300px;
   border-radius:15px;
   display:none;
+  margin:auto;
 }
 .confetti{
   position:fixed;
   width:8px;
   height:8px;
-  background:red;
   top:-10px;
   animation:fall 5s linear infinite;
 }
@@ -50,12 +51,11 @@ button{
 <button id="playMusicBtn">Tap to Play Music 🎵</button>
 
 <div class="slideshow">
-  <img src="img1.jpg">
-  <img src="img2.jpg">
-  <img src="img3.jpg">
+  <img src="friend1.jpeg">
+  <img src="friend2.jpeg">
+  <img src="friend3.jpeg">
 </div>
 
-<br><br>
 <a href="message.html"><button>There’s something more</button></a>
 
 <audio id="bgMusic" loop playsinline>
@@ -74,8 +74,7 @@ setInterval(()=>{
 },120);
 
 // slideshow
-let slides=document.querySelectorAll(".slideshow img");
-let s=0;
+let slides=document.querySelectorAll(".slideshow img"), s=0;
 slides[0].style.display="block";
 setInterval(()=>{
   slides[s].style.display="none";
@@ -93,7 +92,7 @@ for(let i=0;i<40;i++){
   document.body.appendChild(c);
 }
 
-// music (iPhone safe)
+// music
 document.getElementById("playMusicBtn").addEventListener("touchend",()=>{
   const m=document.getElementById("bgMusic");
   m.volume=0.8;
