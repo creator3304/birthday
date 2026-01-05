@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Final Note</title>
-
 <style>
 body{
   margin:0;
@@ -12,6 +11,8 @@ body{
   color:white;
   text-align:center;
   font-family:Arial;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 .slideshow img{
   width:80%;
@@ -25,9 +26,16 @@ p{
   font-size:1.2rem;
   line-height:1.6;
 }
+.fire{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:yellow;
+  animation:burst 1.5s infinite;
+}
+@keyframes burst{to{transform:translateY(-100vh);opacity:0;}}
 </style>
 </head>
-
 <body>
 
 <h2>Final Words 💫</h2>
@@ -49,7 +57,7 @@ Wo Yadav ka chhora Akhilesh ko apna neta batata hai.
 </audio>
 
 <script>
-// slideshow
+// Slideshow
 let slides=document.querySelectorAll(".slideshow img"), s=0;
 slides[0].style.display="block";
 setInterval(()=>{
@@ -58,12 +66,21 @@ setInterval(()=>{
   slides[s].style.display="block";
 },2000);
 
-// resume music
-if(localStorage.getItem("music")){
+// Fireworks
+for(let i=0;i<30;i++){
+  let f=document.createElement("div");
+  f.className="fire";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top="100vh";
+  f.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(f);
+}
+
+// Resume music if started
+if(localStorage.getItem("musicStarted")){
   document.getElementById("bgMusic").play().catch(()=>{});
 }
 </script>
 
 </body>
 </html>
-
