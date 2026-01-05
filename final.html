@@ -3,112 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Final Note</title>
+<title>Final</title>
 
 <style>
 body{
- margin:0;
- font-family:Arial, sans-serif;
- background:black;
- color:white;
- text-align:center;
- overflow-x:hidden;
+  margin:0;
+  background:black;
+  color:white;
+  text-align:center;
+  font-family:Arial;
 }
 .slideshow img{
- width:90%;
- max-width:300px;
- border-radius:20px;
- display:none;
- margin:auto;
+  width:80%;
+  max-width:300px;
+  border-radius:15px;
+  display:none;
 }
-p{
- max-width:90%;
- margin:35px auto;
- font-size:1.2rem;
- line-height:1.7;
+.fire{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:yellow;
+  animation:burst 1.5s infinite;
 }
-.confetti,.balloon{
- position:fixed;
- top:-10px;
- animation:fall linear infinite;
+@keyframes burst{
+  to{transform:translateY(-100vh);opacity:0;}
 }
-.balloon{width:20px;height:30px;border-radius:50%}
-@keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
 
 <body>
 
-<div class="slideshow">
- <img src="friend10.jpg">
- <img src="friend11.jpeg">
- <img src="friend12.jpeg">
- <img src="friend13.jpeg">
-</div>
+<h2>Final Words ✨</h2>
 
-<p>
-"Gae-bhains ki sewa mein jiska mann harshata hai,<br>
-Wo Yadav ka chhora Akhilesh ko apna neta batata hai."
+<p style="font-size:18px; padding:10px;">
+Gae-bhains ki sewa mein jiska mann harshata hai,<br>
+Wo Yadav ka chhora Akhilesh ko apna neta batata hai.
 </p>
 
-<script>
-// slideshow
-let s=document.querySelectorAll(".slideshow img"),i=0;
-s[0].style.display="block";
-setInterval(()=>{
- s[i].style.display="none";
- i=(i+1)%s.length;
- s[i].style.display="block";
-},2500);
+<div class="slideshow">
+  <img src="img10.jpg">
+  <img src="img11.jpg">
+  <img src="img12.jpg">
+  <img src="img13.jpg">
+</div>
 
-// effects
-for(let i=0;i<30;i++){
- let e=document.createElement("div");
- e.className=Math.random()>0.5?"confetti":"balloon";
- e.style.left=Math.random()*100+"vw";
- e.style.background=`hsl(${Math.random()*360},80%,60%)`;
- e.style.animationDuration=2+Math.random()*3+"s";
- document.body.appendChild(e);
-}
-</script>
-
- <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const music = document.getElementById("bgMusic");
-
-// start music after first user interaction
-document.addEventListener("click", () => {
-  if (!localStorage.getItem("musicStarted")) {
-    music.volume = 0.6;
-    music.play();
-    localStorage.setItem("musicStarted", "yes");
-  }
-});
-
-// resume music on page load
-if (localStorage.getItem("musicStarted")) {
-  music.volume = 0.6;
-  music.play().catch(()=>{});
-}
-</script>
 <audio id="bgMusic" loop playsinline>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-if (localStorage.getItem("musicStarted")) {
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.8;
-  music.play().catch(()=>{});
+// slideshow
+let slides=document.querySelectorAll(".slideshow img");
+let s=0;
+slides[0].style.display="block";
+setInterval(()=>{
+  slides[s].style.display="none";
+  s=(s+1)%slides.length;
+  slides[s].style.display="block";
+},2000);
+
+// fireworks
+for(let i=0;i<30;i++){
+  let f=document.createElement("div");
+  f.className="fire";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top="100vh";
+  f.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(f);
+}
+
+// resume music
+if(localStorage.getItem("music")){
+  document.getElementById("bgMusic").play().catch(()=>{});
 }
 </script>
 
-
 </body>
 </html>
-
-
-
