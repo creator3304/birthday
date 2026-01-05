@@ -48,6 +48,7 @@ button{
 <body>
 
 <h1>Happy Birthday Kaushal 🎉</h1>
+ <button id="playMusicBtn">Tap to Play Music 🎵</button>
 
 <div class="slideshow">
  <img src="friend1.jpeg">
@@ -102,7 +103,32 @@ if (localStorage.getItem("musicStarted")) {
   music.play().catch(()=>{});
 }
 </script>
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playMusicBtn");
+
+btn.addEventListener("click", () => {
+  music.volume = 0.6;
+  music.play().then(() => {
+    localStorage.setItem("musicStarted", "yes");
+    btn.style.display = "none";
+  }).catch(() => {
+    alert("Tap again to start music 🎵");
+  });
+});
+
+// resume music if already started
+if (localStorage.getItem("musicStarted")) {
+  music.volume = 0.6;
+  music.play().catch(()=>{});
+}
+</script>
 
 </body>
 </html>
+
 
