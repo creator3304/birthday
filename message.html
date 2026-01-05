@@ -18,6 +18,15 @@ body{
   max-width:300px;
   border-radius:15px;
   display:none;
+  margin:auto;
+}
+button{
+  padding:12px 25px;
+  background:#ff7043;
+  color:white;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
 }
 </style>
 </head>
@@ -27,19 +36,18 @@ body{
 <h2>You are truly amazing 💖</h2>
 <p>
 As a friend and as a human being, you are caring, supportive and understanding.
-Your presence makes life lighter and happier.
+Your presence makes life brighter and warmer.
 </p>
 
 <div class="slideshow">
-  <img src="img4.jpg">
-  <img src="img5.jpg">
-  <img src="img6.jpg">
-  <img src="img7.jpg">
-  <img src="img8.jpg">
-  <img src="img9.jpg">
+  <img src="friend4.jpeg">
+  <img src="friend5.jpeg">
+  <img src="friend6.jpeg">
+  <img src="friend7.jpeg">
+  <img src="friend8.jpeg">
+  <img src="friend9.jpeg">
 </div>
 
-<br>
 <a href="final.html"><button>Final Note</button></a>
 
 <audio id="bgMusic" loop playsinline>
@@ -47,8 +55,8 @@ Your presence makes life lighter and happier.
 </audio>
 
 <script>
-let slides=document.querySelectorAll(".slideshow img");
-let s=0;
+// slideshow
+let slides=document.querySelectorAll(".slideshow img"), s=0;
 slides[0].style.display="block";
 setInterval(()=>{
   slides[s].style.display="none";
