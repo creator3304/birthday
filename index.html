@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday</title>
-
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   text-align:center;
   background:#000;
   color:white;
-  overflow-x:hidden; /* prevent horizontal scroll */
-  overflow-y:auto;   /* allow vertical scrolling */
+  overflow-x:hidden;
+  overflow-y:auto;
 }
-
 h1{margin-top:30px;}
 button{
   padding:12px 22px;
@@ -40,12 +38,9 @@ button{
   top:-10px;
   animation:fall 5s linear infinite;
 }
-@keyframes fall{
-  to{transform:translateY(100vh);}
-}
+@keyframes fall{to{transform:translateY(100vh);}}
 </style>
 </head>
-
 <body>
 
 <h1 id="type"></h1>
@@ -65,7 +60,7 @@ button{
 </audio>
 
 <script>
-// typewriter
+// Typewriter
 let text="Happy Birthday Kaushal 🎉";
 let i=0;
 setInterval(()=>{
@@ -75,7 +70,7 @@ setInterval(()=>{
   }
 },120);
 
-// slideshow
+// Slideshow
 let slides=document.querySelectorAll(".slideshow img"), s=0;
 slides[0].style.display="block";
 setInterval(()=>{
@@ -84,7 +79,7 @@ setInterval(()=>{
   slides[s].style.display="block";
 },2000);
 
-// confetti
+// Confetti
 for(let i=0;i<40;i++){
   let c=document.createElement("div");
   c.className="confetti";
@@ -94,16 +89,16 @@ for(let i=0;i<40;i++){
   document.body.appendChild(c);
 }
 
-// music
-document.getElementById("playMusicBtn").addEventListener("touchend",()=>{
-  const m=document.getElementById("bgMusic");
-  m.volume=0.8;
-  m.play();
-  localStorage.setItem("music","yes");
-  document.getElementById("playMusicBtn").style.display="none";
+// iPhone-safe music
+document.getElementById("playMusicBtn").addEventListener("touchend", ()=>{
+  const music=document.getElementById("bgMusic");
+  music.volume=0.8;
+  music.play().then(()=>{
+    localStorage.setItem("musicStarted","yes");
+    document.getElementById("playMusicBtn").style.display="none";
+  }).catch(()=>{alert("Tap again to start music 🎵");});
 },{once:true});
 </script>
 
 </body>
 </html>
-
